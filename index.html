@@ -35,9 +35,12 @@
                 }
             };
 
-            setTimeout(function(){
-                button.onclick();
-            },5000);
+            window.onblur = function(){
+                setTimeout(function(){
+                    button.onclick();
+                },5000);
+            };
+
         } else {
             alert('浏览器不支持Notification');
         }
