@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>notification</title>
+</head>
+<body>
+    <button id="button">请点击</button>
+    <p id="text"></p>
+    <script>
+        if (window.Notification) {
+            var button = document.getElementById('button'), text = document.getElementById('text');
+
+            var popNotice = function() {
+                if (Notification.permission == "granted") {
+                    var notification = new Notification("Hi，帅哥：", {
+                        body: '可以加你为好友吗？',
+                        icon: 'round_corner_image_by_atool.png'
+                    });
+
+                    notification.onclick = function() {
+                        text.innerHTML = '张小姐已于' + new Date().toTimeString().split(' ')[0] + '加你为好友！';
+                        notification.close();
+                    };
+                }
+            };
+
+            button.onclick = function() {
+                console.log(Notification.permission);
+                if (Notification.permission == "granted") {
+                    console.log('123');
+                    popNotice();
+                } else if (Notification.permission != "denied") {
+                    Notification.requestPermission(function (permission) {
+                        popNotice();
+                    });
+                }
+            };
+        } else {
+            alert('浏览器不支持Notification');
+        }
+    </script>
+</body>
+</html>
