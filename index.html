@@ -26,9 +26,7 @@
             };
 
             button.onclick = function() {
-                console.log(Notification.permission);
                 if (Notification.permission == "granted") {
-                    console.log('123');
                     popNotice();
                 } else if (Notification.permission != "denied") {
                     Notification.requestPermission(function (permission) {
@@ -37,7 +35,9 @@
                 }
             };
 
-            setTimeout(popNotice,5000);
+            setTimeout(function(){
+                button.onclick();
+            },5000);
         } else {
             alert('浏览器不支持Notification');
         }
