@@ -1,3 +1,3 @@
 # notification
 # 在线预览
-< https://btea.github.io/notification/>
+https://btea.github.io/notification/
